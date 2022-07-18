@@ -19,4 +19,4 @@ sqlcinit:
 sqlcgen:
 	docker run --rm -v $(CURDIR):/src -w /src kjconroy/sqlc generate
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlcinit sqlcgenerate
+.PHONY: postgres createdb dropdb migrateup migratedown sqlcinit sqlcgen
