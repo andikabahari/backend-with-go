@@ -13,4 +13,10 @@ migrateup:
 migratedown:
 	migrate -path db/migration -database "postgresql://root:root@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
-.PHONY: postgres createdb dropdb migrateup migratedown
+sqlcinit:
+	docker run --rm -v $(CURDIR):/src -w /src kjconroy/sqlc init
+
+sqlcgen:
+	docker run --rm -v $(CURDIR):/src -w /src kjconroy/sqlc generate
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlcinit sqlcgenerate
